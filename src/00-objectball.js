@@ -126,6 +126,8 @@ function players() {
     return Object.assign({}, homePlayers, awayPlayers)
 }
 
+console.log(players());
+
 function numPointsScored(playerInput) {
     for (const playerName in players()) {
         if (playerName === playerInput) {
@@ -146,29 +148,37 @@ function shoeSize(playerInput) {
 }
 // returns shoe size for that player
 
-function teams() {
+shoeSize("DeSagna Diop");
+
+function teamName() {
     const game = gameObject()
-    const homeTeam = game.home.teamName
-    const awayTeam = game.away.teamName
+    const homeTeam = game.home
+    const awayTeam = game.away
 
-    teamObj = Object.assign({}, homeTeam, awayTeam);
-
-    return teamObj;
+    return Object.assign({}, homeTeam, awayTeam);
 }
+
+console.log(teamName());
 
 function teamColors(teamInput) {
     for (const team in teams()) {
         if (team === teamInput) {
-            return teams()[team].colors
+            return teams().colors
         }
     }
+
 // returns an array of that teams colors
 }
 
 teamColors("Brooklyn Nets");
 
 function teamNames() {
+    const newArr = [];
+    const game = gameObject();
+    const homeTeam = game.home.teamName
+    const awayTeam = game.away.teamName
 
+    return newArr.push(homeTeam, awayTeam)
 // operates on the game object to return an array of team names
 }
 
