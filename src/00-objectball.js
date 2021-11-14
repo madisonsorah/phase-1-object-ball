@@ -146,50 +146,63 @@ function shoeSize(playerInput) {
         }
     }  
 }
-// returns shoe size for that player
+// // returns shoe size for that player
 
 shoeSize("DeSagna Diop");
 
-function teamName() {
-    const game = gameObject()
-    const homeTeam = game.home
-    const awayTeam = game.away
-
-    return Object.assign({}, homeTeam, awayTeam);
-}
-
-console.log(teamName());
-
 function teamColors(teamInput) {
-    for (const team in teams()) {
-        if (team === teamInput) {
-            return teams().colors
-        }
+    const game = gameObject();
+    const homeTeam = game.home;
+    const awayTeam = game.away;
+
+    if (teamInput === homeTeam.teamName) {
+        return homeTeam.colors;
+    } else if (teamInput === awayTeam.teamName) {
+        return awayTeam.colors;
     }
 
-// returns an array of that teams colors
-}
+  // returns an array of that teams colors
+  // make a function that takes a team name as an argument
+  // if the team name matches a team name in the array, find the team's colors
+  // return an array of that team's colors
+    }
 
-teamColors("Brooklyn Nets");
+console.log(teamColors("Charlotte Hornets"));
 
-function teamNames() {
-    const newArr = [];
+
+function playerNumbers(teamInput) {
     const game = gameObject();
-    const homeTeam = game.home.teamName
-    const awayTeam = game.away.teamName
+    const homeTeam = game.home;
+    const awayTeam = game.away;
+    let newArr = [];
 
-    return newArr.push(homeTeam, awayTeam)
-// operates on the game object to return an array of team names
-}
-
-function playerNumbers(teamName) {
-
+    if (teamInput === homeTeam.teamName) {
+       for (const player in homeTeam.players) {
+        const playerData = homeTeam.players[player];
+        newArr.push(playerData.number);
+       }
+    } else if (teamInput === awayTeam.teamName) {
+        for (const player in awayTeam.players) {
+        const playerNumber = awayTeam.players[player];
+        newArr.push(playerNumber.number);
+        }
+    }
+return newArr;
 // returns array of the jersey numbers for that team
 }
 
-function playerStats(playerName) {
+console.log(playerNumbers("Charlotte Hornets"));
+
+function playerStats(playerInput) {
+    for (const playerName in players()) {
+        if (playerName === playerInput) {
+            return players()[playerName];
+        }
+    }
 // returns object of that player's stats
 }
+
+console.log(playerStats("DeSagna Diop"))
 
 function bigShoeRebounds() {
     // returns number of rebounds associated with the player that has the largest shoe size
@@ -197,17 +210,14 @@ function bigShoeRebounds() {
     // second: return that player's number of rebounds
 }
 
-mostPointsScored();
-winningTeam();
-playerWithLongestName();
+// mostPointsScored();
+// winningTeam();
+// playerWithLongestName();
 
 
 function doesLongNameStealATon() {
     // returns true if the player with the longest name had the most steals
 }
-
-
-
 
 
 
